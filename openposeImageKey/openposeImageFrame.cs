@@ -3,33 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace openposeImageKey
 {
     public class openposeImageFrame
     {
         public string fileName = null;
-        public List<float[,]> bodys = null;
+        public List<openposeKeyPoint[]> bodys = null;
 
         public openposeImageFrame()
         {
-            bodys = new List<float[,]>();
+            bodys = new List<openposeKeyPoint[]>();
         }
 
         static public openposeImageFrame[] loadFromTextFile(string file)
         {
             List<openposeImageFrame> rtn = new List<openposeImageFrame>();
-            string line;
+            string line = "";
+            string recordStr="";
+            bool inSection = false;
+
 
             System.IO.StreamReader fr = new System.IO.StreamReader(@file);
             try
             {
                 while ((line = fr.ReadLine()) != null)
                 {
-                    line.Trim();
-                    if (line[0] == '>')
+                    if (line.Trim().Length < 1)
+                        continue;
+
+                    if (inSection)
                     {
-                        rtn.Add(parseImageSection(line.Substring(1), fr);
+                        if (line[0] == '>')
+                        {
+                            openposeImageFrame oif = openposeImageFrame.fromTextLine(recordStr);
+                            if(oif!=null)
+                                rtn.Add(oif);
+
+                            recordStr = line.Substring(1);
+                        }
+                        else
+                            recordStr += line;
+                    }
+                    else if (line[0] == '>')
+                    {
+                        inSection = true;
+                        recordStr = line.Substring(1);
                     }
                 }
 
@@ -39,49 +59,53 @@ namespace openposeImageKey
                 fr.Close();
                 throw ex;
             }
+
             return rtn.ToArray();
         }
 
-        static public openposeImageFrame parseImageSection(string fileName, System.IO.StreamReader sr)
+        static public openposeImageFrame fromTextLine(string line)
         {
-            int chr;
-            openposeImageFrame rtn = new openposeImageFrame();
-            rtn.fileName = fileName.Trim();
+            openposeImageFrame rtn= new openposeImageFrame();
+            line = line.Replace('[', '<').Replace(']', '>');
+            line = Regex.Replace(line, "<<<", "|<<");
+            line = Regex.Replace(line, ">>>", ">>|");
 
-            while ((chr = sr.Read()) != -1)
-            {
-                if (chr == (int)'[')
-                    getFrameBodys(rtn, sr);
-            }
+            string[] parts = line.Split('|');
+            if (parts.Length < 3)
+                return null;
+            rtn.fileName = parts[0].Trim();
+
+
+
+            string bodysStr = Regex.Replace(Regex.Replace(Regex.Replace(parts[1], "<<", "_<"),">>",">_"),"_\\s+_","_");
+            if (!Regex.IsMatch(bodysStr, "^_") || !Regex.IsMatch(bodysStr, "_$"))
+                throw new Exception("Invalid bodys keypoints format");
+            bodysStr = Regex.Replace(bodysStr, "^_|_$","");
+            string[] bodys = bodysStr.Split('_');
+
+            foreach (string body in bodys)
+                if(!Regex.IsMatch(body, "\\.\\.\\."))
+                    rtn.bodys.Add(bodyFromLine(body));
+
             return rtn;
         }
 
-        static public void getFrameBodys(openposeImageFrame oif, System.IO.StreamReader sr)
+        static public openposeKeyPoint[] bodyFromLine(string line)
         {
-            int chr;
-            List<string> keyPointLines = new List<string>();
-            while ((chr = sr.Read()) != -1)
-            {
-                if ('[' == (char)chr)
-                    getBodyPoints(keyPointLines, sr);
-            }
+            List<openposeKeyPoint> points = new List<openposeKeyPoint>();
+
+            line = Regex.Replace(line.Trim(), ">\\s+<", "_");
+            if (!Regex.IsMatch(line, "^<") || !Regex.IsMatch(line, ">$"))
+                throw new Exception("Invalid keypoints format");
+
+            line = Regex.Replace(line, "^<|>$", "");
+            string[] parts = line.Split('_');
+
+            foreach (string ps in parts)
+                points.Add(openposeKeyPoint.fromString2D(ps));
+
+            return points.ToArray();
         }
-
-        static public void getBodyPoints(List<string> lines, System.IO.StreamReader sr)
-        {
-            int chr;
-            bool inPointLine = false;
-            string line
-
-            while ((chr = sr.Read()) != -1)
-            {
-                if (inPointLine)
-                {
-
-                }
-                else
-                    inPointLine = '[' == (char) chr;
-            }
-        }
+        
     }
 }

@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\openposeImageKey\openposeImageKey.csproj">
+      <Project>{7c445bfe-fc37-4629-8a0b-bd6caa113cfc}</Project>
+      <Name>openposeImageKey</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
