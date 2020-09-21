@@ -130,7 +130,11 @@ namespace openposeImageKey
 
             string[] parts = line.Split('|');
             if (parts.Length < 3)
-                return null;
+            {
+                string[] rFile = Regex.Split(line, ".jpg");
+                rtn.fileName = rFile[0] + ".jpg";
+                return rtn;
+            }
             rtn.fileName = parts[0].Trim();
 
 

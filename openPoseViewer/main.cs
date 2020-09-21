@@ -148,12 +148,18 @@ namespace openPoseViewer
                                 else
                                     imageLabeler.labelBody25(im, kp);
                             }
-                            string saveName = savePath + "\\" + Path.GetFileNameWithoutExtension(f.fileName)+"_gen.png";
+                            string saveName = savePath + "\\" + Path.GetFileNameWithoutExtension(f.fileName);
+                            if(chkAddName.Checked && this.fileName.Length>0)
+                            {
+                                saveName += "—" + Path.GetFileNameWithoutExtension(this.fileName) + ".png";
+                            }
+                            else saveName+="_gen.png";
                             if(File.Exists(saveName))
                             {
                                 MessageBox.Show(saveName + " is exist! abort batch process");
                                 return;
                             }
+
                             im.Save(saveName, ImageFormat.Png);
                         }
                     }

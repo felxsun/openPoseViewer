@@ -29,30 +29,32 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBatch = new System.Windows.Forms.Button();
             this.cbxImage = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblFile = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.cbxType = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnLoad = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.picMain = new System.Windows.Forms.PictureBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.lblFile = new System.Windows.Forms.Label();
-            this.cbxType = new System.Windows.Forms.ComboBox();
-            this.btnBatch = new System.Windows.Forms.Button();
+            this.chkAddName = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkAddName);
             this.panel1.Controls.Add(this.btnBatch);
             this.panel1.Controls.Add(this.cbxImage);
             this.panel1.Controls.Add(this.label1);
@@ -62,6 +64,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(624, 65);
             this.panel1.TabIndex = 0;
+            // 
+            // btnBatch
+            // 
+            this.btnBatch.Location = new System.Drawing.Point(393, 35);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(122, 20);
+            this.btnBatch.TabIndex = 4;
+            this.btnBatch.Text = "Batch export...";
+            this.btnBatch.UseVisualStyleBackColor = true;
+            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
             // 
             // cbxImage
             // 
@@ -91,6 +103,46 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(624, 32);
             this.panel4.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.lblFile);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(128, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(3);
+            this.panel6.Size = new System.Drawing.Size(370, 32);
+            this.panel6.TabIndex = 4;
+            // 
+            // lblFile
+            // 
+            this.lblFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFile.Location = new System.Drawing.Point(3, 3);
+            this.lblFile.Name = "lblFile";
+            this.lblFile.Size = new System.Drawing.Size(364, 26);
+            this.lblFile.TabIndex = 0;
+            this.lblFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.cbxType);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(498, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(126, 32);
+            this.panel7.TabIndex = 3;
+            // 
+            // cbxType
+            // 
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Items.AddRange(new object[] {
+            "Body_25",
+            "coco"});
+            this.cbxType.Location = new System.Drawing.Point(3, 7);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 20);
+            this.cbxType.TabIndex = 0;
             // 
             // panel5
             // 
@@ -138,55 +190,17 @@
             this.picMain.TabIndex = 0;
             this.picMain.TabStop = false;
             // 
-            // panel7
+            // chkAddName
             // 
-            this.panel7.Controls.Add(this.cbxType);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(498, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(126, 32);
-            this.panel7.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.lblFile);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(128, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(3);
-            this.panel6.Size = new System.Drawing.Size(370, 32);
-            this.panel6.TabIndex = 4;
-            // 
-            // lblFile
-            // 
-            this.lblFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblFile.Location = new System.Drawing.Point(3, 3);
-            this.lblFile.Name = "lblFile";
-            this.lblFile.Size = new System.Drawing.Size(364, 26);
-            this.lblFile.TabIndex = 0;
-            this.lblFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbxType
-            // 
-            this.cbxType.FormattingEnabled = true;
-            this.cbxType.Items.AddRange(new object[] {
-            "Body_25",
-            "coco"});
-            this.cbxType.Location = new System.Drawing.Point(3, 7);
-            this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 20);
-            this.cbxType.TabIndex = 0;
-            // 
-            // btnBatch
-            // 
-            this.btnBatch.Location = new System.Drawing.Point(393, 35);
-            this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(122, 20);
-            this.btnBatch.TabIndex = 4;
-            this.btnBatch.Text = "Batch export...";
-            this.btnBatch.UseVisualStyleBackColor = true;
-            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
+            this.chkAddName.AutoSize = true;
+            this.chkAddName.Checked = true;
+            this.chkAddName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAddName.Location = new System.Drawing.Point(521, 39);
+            this.chkAddName.Name = "chkAddName";
+            this.chkAddName.Size = new System.Drawing.Size(91, 16);
+            this.chkAddName.TabIndex = 5;
+            this.chkAddName.Text = "Add FileName";
+            this.chkAddName.UseVisualStyleBackColor = true;
             // 
             // main
             // 
@@ -205,11 +219,11 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -230,6 +244,7 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.ComboBox cbxType;
         private System.Windows.Forms.Button btnBatch;
+        private System.Windows.Forms.CheckBox chkAddName;
     }
 }
 
