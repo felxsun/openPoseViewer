@@ -1,0 +1,11 @@
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.csprojAssemblyReference.cache
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.csproj.CoreCompileInputs.cache
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\bin\Debug\openposeImageKey.dll
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\bin\Debug\openposeImageKey.pdb
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.dll
+E:\codeWorks\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.pdb
+E:\torticollis\openPoseViewer\openposeImageKey\bin\Debug\openposeImageKey.dll
+E:\torticollis\openPoseViewer\openposeImageKey\bin\Debug\openposeImageKey.pdb
+E:\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.csproj.CoreCompileInputs.cache
+E:\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.dll
+E:\torticollis\openPoseViewer\openposeImageKey\obj\Debug\openposeImageKey.pdb
