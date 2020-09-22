@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkAddName = new System.Windows.Forms.CheckBox();
             this.btnBatch = new System.Windows.Forms.Button();
             this.cbxImage = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.picMain = new System.Windows.Forms.PictureBox();
-            this.chkAddName = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -64,6 +64,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(624, 65);
             this.panel1.TabIndex = 0;
+            // 
+            // chkAddName
+            // 
+            this.chkAddName.AutoSize = true;
+            this.chkAddName.Checked = true;
+            this.chkAddName.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAddName.Location = new System.Drawing.Point(521, 39);
+            this.chkAddName.Name = "chkAddName";
+            this.chkAddName.Size = new System.Drawing.Size(91, 16);
+            this.chkAddName.TabIndex = 5;
+            this.chkAddName.Text = "Add FileName";
+            this.chkAddName.UseVisualStyleBackColor = true;
             // 
             // btnBatch
             // 
@@ -138,7 +150,8 @@
             this.cbxType.FormattingEnabled = true;
             this.cbxType.Items.AddRange(new object[] {
             "Body_25",
-            "coco"});
+            "coco",
+            "oppFace"});
             this.cbxType.Location = new System.Drawing.Point(3, 7);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 20);
@@ -189,18 +202,6 @@
             this.picMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picMain.TabIndex = 0;
             this.picMain.TabStop = false;
-            // 
-            // chkAddName
-            // 
-            this.chkAddName.AutoSize = true;
-            this.chkAddName.Checked = true;
-            this.chkAddName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAddName.Location = new System.Drawing.Point(521, 39);
-            this.chkAddName.Name = "chkAddName";
-            this.chkAddName.Size = new System.Drawing.Size(91, 16);
-            this.chkAddName.TabIndex = 5;
-            this.chkAddName.Text = "Add FileName";
-            this.chkAddName.UseVisualStyleBackColor = true;
             // 
             // main
             // 

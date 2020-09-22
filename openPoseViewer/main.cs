@@ -58,6 +58,10 @@ namespace openPoseViewer
                     {
                         this.imageFrames = openposeImageFrame.loadFromTextFile_coco(ofd.FileName);
                     }
+                    if (cbxType.SelectedItem.ToString() == "oppFace")
+                    {
+                        this.imageFrames = openposeImageFrame.loadFromTextFile_face(ofd.FileName);
+                    }
                     else
                         this.imageFrames = openposeImageFrame.loadFromTextFile(ofd.FileName);
 
@@ -106,6 +110,10 @@ namespace openPoseViewer
                         {
                             imageLabeler.labelCoco(this.picMain.Image, kp);
                         }    
+                        else if(cbxType.SelectedItem.ToString()=="oppFace")
+                        {
+                            imageLabeler.labelFace(this.picMain.Image, kp);
+                        }
                         else
                             imageLabeler.labelBody25(this.picMain.Image, kp);
                     }
@@ -144,6 +152,10 @@ namespace openPoseViewer
                                 if (cbxType.SelectedItem.ToString() == "coco")
                                 {
                                     imageLabeler.labelCoco(im, kp);
+                                }
+                                else if (cbxType.SelectedItem.ToString() == "oppFace")
+                                {
+                                    imageLabeler.labelFace(im, kp);
                                 }
                                 else
                                     imageLabeler.labelBody25(im, kp);
